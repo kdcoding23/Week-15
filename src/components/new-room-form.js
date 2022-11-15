@@ -34,9 +34,9 @@ export default class NewRoomForm extends React.Component {
         return (
             // updates the specific inputted value with corresponding method above
             <div>
-                <input type="text" placeholder="Name" onChange={this.handleNameChange} value={this.state.nameValue} />
-                <input type="text" placeholder="Area" onChange={this.handleAreaChange} value={this.state.areaValue} />
-                <button onClick={this.handleClick}>Add Room</button>
+                <input className="input" type="text" placeholder="Name" onChange={this.handleNameChange} value={this.state.nameValue} />
+                <input className="input" type="text" placeholder="Area (sq. ft.)" onChange={this.handleAreaChange} value={this.state.areaValue} />
+                <button className="button" onClick={this.handleClick}>Add Room</button>
             </div>
         );
     }

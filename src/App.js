@@ -1,6 +1,8 @@
 import React from "react";
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import House from "./components/house";
+import NavBar from "./components/navbar";
 
 const HOUSES_ENDPOINT = "https://ancient-taiga-31359.herokuapp.com/api/houses";
 
@@ -24,13 +26,18 @@ export default class App extends React.Component {
       : null;
       
       return (
+        <>
         <div>
+          <NavBar />
+        </div>
+        <div className="houses">
           {houses}
         </div>
+        </>
       );
   }
 
-  // make http requests and get data for houses in state
+  // READ: make http requests and get data for houses in state
   componentDidMount() {
     fetch(HOUSES_ENDPOINT)
       .then(res => res.json())
@@ -41,7 +48,7 @@ export default class App extends React.Component {
     });
   }
 
-  // to find index of room you want to delete and then deleting just that one (using splice)
+  // DELETE: to find index of room you want to delete and then deleting just that one (using splice)
   deleteRoom(e, house, room) {
     const index = house.rooms.indexOf(room);
     house.rooms.splice(index, 1);
@@ -61,7 +68,7 @@ export default class App extends React.Component {
       e.preventDefault();
   }
 
-  // add new room and to specific house and update to page
+  // CREATE: add new room and to specific house and update to page
   addNewRoom(e, house, room) {
     // const index = house.rooms.indexOf(room);
     // house.rooms.splice(index, 1);
@@ -83,7 +90,7 @@ export default class App extends React.Component {
 }
 
 
-// send http request to make this update in API
+// UPDATE: send http request to make this update in API
 function updateHouse(house) {
   return fetch(`${HOUSES_ENDPOINT}/${house._id}`, {
     method: 'PUT',
